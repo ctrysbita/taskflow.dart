@@ -5,12 +5,22 @@ typedef TaskFunc = Future<TaskResult> Function(TaskFlowContext);
 enum TaskState {
   ok,
   skipped,
+  canceled,
 }
 
-class TaskResult {
-  TaskResult();
-  TaskResult.skipped();
-  TaskResult.canceled();
+class TaskResult<T> {
+  final TaskState state;
+  final T? result;
+
+  TaskResult(this.result) : state = TaskState.ok;
+
+  TaskResult.skipped()
+      : state = TaskState.skipped,
+        result = null;
+
+  TaskResult.canceled()
+      : state = TaskState.canceled,
+        result = null;
 }
 
 /// A derivable and composable unit in taskflow.
@@ -22,6 +32,9 @@ abstract class Task {
   Object get key => this;
 
   factory Task(TaskFunc task, {Object? key}) = _Task;
+
+  factory Task.when(Future<bool> Function() condition, TaskFunc task) =>
+      ConditionalTask(condition, task);
 
   /// Execute current task.
   Future<TaskResult> call(TaskFlowContext context);

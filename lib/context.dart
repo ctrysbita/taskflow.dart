@@ -16,7 +16,8 @@ class TaskFlowContext {
   void markAsRunning(Task task, Future<TaskResult> future) {
     assert(
       !_runningTasks.containsKey(task.key),
-      'Duplicated task key detected',
+      'The task is already running. '
+      'Please check if you are using same key for more than one tasks.',
     );
     _runningTasks[task.key] = future;
   }
@@ -31,5 +32,6 @@ class TaskFlowContext {
     _state = TaskFlowState.canceled;
   }
 
-  TaskResult? resultOf(Object key) => _finishedTasks[key];
+  TaskResult<T>? resultOf<T>(Object key) =>
+      _finishedTasks[key] as TaskResult<T>?;
 }

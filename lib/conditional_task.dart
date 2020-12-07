@@ -1,8 +1,10 @@
 part of 'taskflow.dart';
 
+typedef ConditionFunc = Future<bool> Function();
+
 /// The task executes only when given condition satisfied.
 class ConditionalTask extends _Task {
-  Future<bool> Function() condition;
+  ConditionFunc condition;
 
   ConditionalTask(
     this.condition,
@@ -15,6 +17,6 @@ class ConditionalTask extends _Task {
     if (context.isCanceled) return TaskResult.canceled();
     if (!await condition()) return TaskResult.skipped();
 
-    return super(context);
+    return super.call(context);
   }
 }

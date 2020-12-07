@@ -1,6 +1,9 @@
 part of 'taskflow.dart';
 
-class ParallelTaskResult extends TaskResult {}
+class ParallelTaskResult {
+  final List<TaskResult> results;
+  ParallelTaskResult(this.results);
+}
 
 class ParallelTask implements Task {
   @override
@@ -15,7 +18,7 @@ class ParallelTask implements Task {
   Future<TaskResult> call(TaskFlowContext context) async {
     if (context.isCanceled) return TaskResult.canceled();
 
-    await Future.wait(tasks.map((t) => t(context)));
-    return ParallelTaskResult();
+    var results = await Future.wait(tasks.map((t) => t(context)));
+    return TaskResult(ParallelTaskResult(results));
   }
 }

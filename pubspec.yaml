@@ -1,5 +1,5 @@
 name: taskflow
-description: Taskflow helps you quickly manage asynchronous tasks.
+description: TaskFlow helps you quickly manage asynchronous tasks.
 
 environment:
   sdk: ">=2.12.0-29.10.beta <3.0.0"
