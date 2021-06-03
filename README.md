@@ -1,3 +1,7 @@
 # TaskFlow
 
-TaskFlow helps you easily manage asynchronous tasks.
+TaskFlow helps you manage asynchronous tasks easily.
+
+## Usage
+
+See example for details.

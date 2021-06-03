@@ -1,6 +1,6 @@
 name: taskflow
-description: TaskFlow helps you quickly manage asynchronous tasks.
-version: 0.1.0
+description: TaskFlow helps you manage asynchronous tasks easily.
+version: 0.1.1
 homepage: https://github.com/ctrysbita/taskflow-dart
 
 environment:
