@@ -1,3 +1,3 @@
 # TaskFlow
 
-TaskFlow helps you quickly manage asynchronous tasks.
+TaskFlow helps you easily manage asynchronous tasks.
