@@ -3,10 +3,10 @@ part of '../taskflow.dart';
 typedef ConditionFunc = Future<bool> Function();
 
 /// The task executes only when given condition satisfied.
-class ConditionalTask extends _Task {
+class ConditionalTask extends SimpleTask {
   final ConditionFunc condition;
 
-  ConditionalTask(
+  const ConditionalTask(
     this.condition,
     TaskFunc task, {
     Object? key,

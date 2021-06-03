@@ -8,7 +8,7 @@ class SequentialTask implements Task {
 
   final List<Task> tasks;
 
-  SequentialTask(this.tasks, {Object? key}) : _key = key;
+  const SequentialTask(this.tasks, {Object? key}) : _key = key;
 
   SequentialTask.fromFunc(List<TaskFunc> tasks, {Object? key})
       : _key = key,

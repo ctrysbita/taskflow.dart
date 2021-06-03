@@ -30,6 +30,18 @@ void main() {
         print('I am parallel task 3.');
       }),
     ]),
+    ConditionalTask(
+      () async => DateTime.now().isAfter(DateTime(2077)),
+      (context) async {
+        print('Skipped task.');
+      },
+    ),
+    ConditionalTask(
+      () async => DateTime.now().isAfter(DateTime(2000)),
+      (context) async {
+        print('Now is 21st century.');
+      },
+    ),
   ]);
 
   // Create a context.

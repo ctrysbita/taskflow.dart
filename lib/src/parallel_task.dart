@@ -8,7 +8,7 @@ class ParallelTask implements Task {
 
   final List<Task> tasks;
 
-  ParallelTask(this.tasks, {Object? key}) : _key = key;
+  const ParallelTask(this.tasks, {Object? key}) : _key = key;
 
   ParallelTask.fromFunc(List<TaskFunc> tasks, {Object? key})
       : _key = key,

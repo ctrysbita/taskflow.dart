@@ -11,7 +11,7 @@ abstract class Task {
   Object get key => this;
 
   /// Create a simple task.
-  factory Task(TaskFunc task, {Object? key}) = _Task;
+  factory Task(TaskFunc task, {Object? key}) = SimpleTask;
 
   /// Create a [ConditionalTask].
   factory Task.when(
@@ -25,14 +25,14 @@ abstract class Task {
 }
 
 /// A simple task that wraps a [TaskFunc].
-class _Task implements Task {
+class SimpleTask implements Task {
   @override
   Object get key => _key ?? this;
   final Object? _key;
 
   final TaskFunc _task;
 
-  _Task(this._task, {Object? key}) : _key = key;
+  const SimpleTask(this._task, {Object? key}) : _key = key;
 
   @override
   Future<void> call(TaskFlowContext context) async {
